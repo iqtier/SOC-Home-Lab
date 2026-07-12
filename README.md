@@ -4,7 +4,7 @@
 ![SIEM](https://img.shields.io/badge/SIEM-Wazuh_4.7.5-blue)
 ![Platform](https://img.shields.io/badge/Platform-VirtualBox-orange)
 
-## 📋 Overview
+## Overview
 A fully functional Security Operations Center (SOC) 
 home lab built from scratch using VirtualBox. 
 Designed to simulate a real enterprise environment 
@@ -13,7 +13,7 @@ and incident response.
 
 ---
 
-## 🖧 Lab Architecture
+## Lab Architecture
 
 | Machine | Role | IP Address |
 |---|---|---|
@@ -25,7 +25,7 @@ and incident response.
 
 ---
 
-## 🛠️ Tools Used
+## Tools Used
 
 - **VirtualBox** — Hypervisor
 - **pfSense 2.8.1** — Firewall and network gateway
@@ -38,7 +38,7 @@ and incident response.
 
 ---
 
-## 🏗️ What I Built
+## What I Built
 
 - Configured **pfSense** as perimeter firewall 
   with WAN/LAN separation and internal routing
@@ -55,7 +55,7 @@ and incident response.
 
 ---
 
-## ⚔️ Attack Simulations
+## Attack Simulations
 
 ### Attack 1 — Network Reconnaissance
 | | |
@@ -78,25 +78,25 @@ and incident response.
 
 ---
 
-## 📊 Wazuh Dashboard
+## Wazuh Dashboard
 
 ![Wazuh Dashboard](screenshots/wazuh-dashboard.png)
 
 ---
 
-## 👥 Active Agents
+## Active Agents
 
 ![Active Agents](screenshots/active-agents.png)
 
 ---
 
-## 📁 Incident Reports
+## Incident Reports
 
 - [IR-2026-001 — SMB Brute Force Attack](incident-reports/IR-2026-001-SMB-BruteForce.pdf)
 
 ---
 
-## 🎯 Skills Demonstrated
+## Skills Demonstrated
 
 - Network architecture and segmentation
 - SIEM deployment and configuration  
@@ -108,7 +108,7 @@ and incident response.
 
 ---
 
-## 📚 References
+## References
 
 - [Wazuh Documentation](https://documentation.wazuh.com)
 - [MITRE ATT&CK Framework](https://attack.mitre.org)
