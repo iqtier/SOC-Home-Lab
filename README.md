@@ -4,28 +4,26 @@
 ![SIEM](https://img.shields.io/badge/SIEM-Wazuh_4.7.5-blue)
 ![Platform](https://img.shields.io/badge/Platform-VirtualBox-orange)
 
-## Overview
-A fully functional Security Operations Center (SOC) 
-home lab built from scratch using VirtualBox. 
-Designed to simulate a real enterprise environment 
-for practicing threat detection, attack simulation, 
-and incident response.
+## 📋 Overview
+A fully functional Security Operations Center (SOC) home lab built from scratch using VirtualBox. Designed to simulate a real enterprise environment for practicing threat detection, attack simulation, and incident response.
 
 ---
 
-## Lab Architecture
+## 🖧 Network Topology
+
+![Network Topology](screenshots/network-topology.png)
 
 | Machine | Role | IP Address |
 |---|---|---|
-| pfSense 2.8.1 | Firewall / Gateway | 192.168.1.1 |
+| pfSense 2.8.1 | Firewall / Gateway | 192.168.1.1 (LAN), DHCP (WAN) |
 | Wazuh SIEM | Security Monitoring | 192.168.1.10 |
 | Windows Server 2022 | Active Directory DC | 192.168.1.150 |
-| Windows 10 | Monitored Endpoint | 192.168.1.21 |
 | Kali Linux | Attack Simulation | 192.168.1.23 |
+| My PC (real machine) | Monitored Endpoint | 192.168.2.x, bridged network |
 
 ---
 
-## Tools Used
+## 🛠️ Tools Used
 
 - **VirtualBox** — Hypervisor
 - **pfSense 2.8.1** — Firewall and network gateway
@@ -38,24 +36,24 @@ and incident response.
 
 ---
 
-## What I Built
+## 🏗️ What I Built
 
-- Configured **pfSense** as perimeter firewall 
-  with WAN/LAN separation and internal routing
-- Deployed **Wazuh SIEM** with Indexer, Manager, 
-  and Dashboard components on Ubuntu Server
-- Built **Active Directory** domain (soc.local) 
-  with Windows Server 2022 domain controller
-- Installed **Sysmon** on all Windows endpoints 
-  using SwiftOnSecurity ruleset for rich telemetry
-- Connected **2 active agents** to Wazuh SIEM 
-  achieving 100% agent coverage
-- Simulated real attacks and detected them 
-  in real time via Wazuh dashboard
+- Configured **pfSense** as perimeter firewall with WAN/LAN separation and internal routing
+- Deployed **Wazuh SIEM** with Indexer, Manager, and Dashboard components on Ubuntu Server
+- Built **Active Directory** domain (soc.local) with Windows Server 2022 domain controller
+- Installed **Sysmon** on all Windows endpoints using SwiftOnSecurity ruleset for rich telemetry
+- Connected a real machine to the lab via a **bridged adapter**, achieving 100% agent coverage across both internal and home networks
+- Simulated real attacks and detected them in real time via the Wazuh dashboard
 
 ---
 
-## Attack Simulations
+## 👥 Active Agents
+
+![Active Agents](screenshots/active-agents.jpg)
+
+---
+
+## ⚔️ Attack Simulations
 
 ### Attack 1 — Network Reconnaissance
 | | |
@@ -63,8 +61,9 @@ and incident response.
 | **Tool** | Nmap 7.99 |
 | **Command** | `nmap -sS -sV -O 192.168.1.150` |
 | **MITRE ATT&CK** | T1046 — Network Service Discovery |
-| **Result** | Open ports discovered, OS fingerprinted |
-| **Detection** | Wazuh generated spike of alerts |
+| **Result** | Open ports discovered, OS fingerprinted (Windows Server 2022, 97% confidence) |
+
+![Nmap Scan](screenshots/nmap-scan.jpg)
 
 ### Attack 2 — SMB Brute Force
 | | |
@@ -72,34 +71,40 @@ and incident response.
 | **Tool** | NetExec |
 | **Target** | soc.local\Administrator via SMB port 445 |
 | **MITRE ATT&CK** | T1110 — Brute Force |
-| **Result** | 10 failed attempts, 0 credentials obtained |
-| **Detection** | 23 authentication failures detected |
-|  | Brute Force + Pass the Hash flagged |
+| **Result** | 10 password attempts, 0 credentials obtained |
+
+![Brute Force Attack](screenshots/brute-force-attack.jpg)
 
 ---
 
-## Wazuh Dashboard
+## 📊 Wazuh Dashboard
 
-![Wazuh Dashboard](screenshots/wazuh-dashboard.jpg)
+Latest capture shows 596 total alerts over 24 hours, with 40 authentication failures and 285 authentication successes detected during active testing.
 
----
+![Wazuh Dashboard Overview](screenshots/wazuh-dashboard-overview.jpg)
 
-## Active Agents
-
-![Active Agents](screenshots/active-agents.jpg)
+![Security Alerts Table](screenshots/security-alerts-table.jpg)
 
 ---
 
-## Incident Reports
+## 🎯 MITRE ATT&CK Mapping
 
-- [IR-2026-001 — SMB Brute Force Attack](incident-reports/IR-2026-001-SMB-BruteForce.pdf)
+Wazuh automatically mapped detected activity to multiple MITRE ATT&CK tactics, including Initial Access, Persistence, Privilege Escalation, Defense Evasion, Credential Access, and Lateral Movement.
+
+![MITRE ATT&CK Breakdown](screenshots/mitre-attack-breakdown.jpg)
 
 ---
 
-## Skills Demonstrated
+## 🔥 pfSense Configuration
+
+![pfSense Config](screenshots/pfsense-config.jpg)
+
+---
+
+## 🎯 Skills Demonstrated
 
 - Network architecture and segmentation
-- SIEM deployment and configuration  
+- SIEM deployment and configuration
 - Endpoint detection and response (EDR)
 - Active Directory administration
 - Attack simulation and threat detection
@@ -108,7 +113,7 @@ and incident response.
 
 ---
 
-## References
+## 📚 References
 
 - [Wazuh Documentation](https://documentation.wazuh.com)
 - [MITRE ATT&CK Framework](https://attack.mitre.org)
