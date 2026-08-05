@@ -80,13 +80,13 @@ and incident response.
 
 ## Wazuh Dashboard
 
-![Wazuh Dashboard](screenshots/wazuh-dashboard.png)
+![Wazuh Dashboard](screenshots/wazuh-dashboard.jpg)
 
 ---
 
 ## Active Agents
 
-![Active Agents](screenshots/active-agents.png)
+![Active Agents](screenshots/active-agents.jpg)
 
 ---
 
